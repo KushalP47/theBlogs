@@ -3,10 +3,17 @@
 function App() {
   return (
     <>
-      <div className="w-full h-40 bg-black flex flex-begin">
-        <img className="w-50 h-50 text-3xl" src="design/color/theblogs-high-resolution-logo-bg-dark.svg" alt="logo" />
+      <div className="w-full h-30 bg-black flex flex-begin">
+        <img className="w-44 h-33 text-lg shadow-lg" src="design/color/theblogs-high-resolution-logo-bg-dark-1.svg" alt="logo" />
       </div>
-      <div className="w-screen h-screen bg-white"></div>
+      <div className="h-[77vh] w-full bg-white">
+        
+      </div>
+      <div className="bg-black border-y">
+          <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+          <img className="w-72 h-54 justify-center" src="design/color/theblogs-high-resolution-logo-transparent.svg" alt="footer" />
+          </div>
+        </div>
     </>
   )
 }
