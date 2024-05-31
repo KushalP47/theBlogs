@@ -1,21 +1,39 @@
-
+import { useEffect, useState } from "react"
+import { Header, Footer } from "./components"
+import { useDispatch } from "react-redux"
+import { authService } from "./appwrite/auth.js"
+import { login, logout } from "./store/authSlice.js"
 
 function App() {
-  return (
+  const [loading, setLoading] = useState(true)
+  const dispatch = useDispatch(authService)
+
+  useEffect(() => {
+    authService.getCurrentUser()
+    .then((userData) => {
+      if (userData) {
+        dispatch(login({userData}))
+      } else {
+        dispatch(logout())
+      }
+    })
+    .finally(() => setLoading(false))
+  }, [])
+
+  return !loading ? (
     <>
-      <div className="w-full h-30 bg-black flex flex-begin">
-        <img className="w-44 h-33 text-lg shadow-lg" src="design/color/theblogs-high-resolution-logo-bg-dark-1.svg" alt="logo" />
+    <div className="min-h-screen flex flex-wrap content-between bg-white">
+      <div className="w-full block">
+        <Header />
+        <main>
+          Content
+          {/* <Outlet /> */}
+        </main>
+        <Footer />
       </div>
-      <div className="h-[77vh] w-full bg-white">
-        
-      </div>
-      <div className="bg-black border-y">
-          <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-          <img className="w-72 h-54 justify-center" src="design/color/theblogs-high-resolution-logo-transparent.svg" alt="footer" />
-          </div>
-        </div>
+    </div>
     </>
-  )
+  ) : null
 }
 
 export default App

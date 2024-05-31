@@ -41,10 +41,10 @@ export class AuthServices {
     async getCurrentUser() {
         try {
             return await this.account.get();
-        } catch (error) {
-            console.log("AppWrite Error :: Get Current Account : ", error)
-            throw error
-        }
+        } catch (e) {
+            if (e.code != 401 || e.type != 'general_unauthorized_scope') 
+            rethrow;
+        } return null;
     }
 
     async logoutAccount() {
