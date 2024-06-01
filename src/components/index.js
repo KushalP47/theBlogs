@@ -5,5 +5,9 @@ import LogoutBtn from './header/LogoutBtn.jsx';
 import Container from './containers/Container.jsx';
 import Button from './Button.jsx';
 import Input from './Input.jsx';
+import Select from './Select.jsx';
+import Login from './Login.jsx';
+import Signup from './Signup.jsx';
+import Protected from './AuthLayout.jsx';
 
-export {Header, Footer, Logo, Input, LogoutBtn, Container, Button};
+export {Header, Protected, Footer, Logo, Input, LogoutBtn, Container, Button, Select, Login, Signup};
