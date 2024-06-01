@@ -9,5 +9,7 @@ import Select from './Select.jsx';
 import Login from './Login.jsx';
 import Signup from './Signup.jsx';
 import Protected from './AuthLayout.jsx';
+import RTE from './RTE.jsx';
+import PostForm from './PostForm/PostForm.jsx'
 
-export {Header, Protected, Footer, Logo, Input, LogoutBtn, Container, Button, Select, Login, Signup};
+export {Header, RTE, PostForm, Protected, Footer, Logo, Input, LogoutBtn, Container, Button, Select, Login, Signup};
