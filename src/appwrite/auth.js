@@ -41,7 +41,7 @@ export class AuthServices {
     async getCurrentUser() {
         try {
             return await this.account.get();
-        } catch (e) {
+        } catch (e) { 
             if (e.code != 401 || e.type != 'general_unauthorized_scope') 
             rethrow;
         } return null;

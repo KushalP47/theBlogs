@@ -18,6 +18,8 @@ const authSlice = createSlice({
     }
 });
 
+
 export const {login, logout} = authSlice.actions;
 
+// exporting the reducer form from authSlice
 export default authSlice.reducer;
