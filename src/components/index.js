@@ -1,5 +1,5 @@
-import Header from './header/Header.jsx';
-import Footer from './footer/Footer.jsx';
+import Header from './header/header.jsx';
+import Footer from './footer/footer.jsx';
 import Logo from './Logo.jsx';
 import LogoutBtn from './header/LogoutBtn.jsx';
 import Container from './containers/Container.jsx';
@@ -11,5 +11,6 @@ import Signup from './Signup.jsx';
 import Protected from './AuthLayout.jsx';
 import RTE from './RTE.jsx';
 import PostForm from './PostForm/PostForm.jsx'
+import PostCard from './PostCard.jsx'
 
-export {Header, RTE, PostForm, Protected, Footer, Logo, Input, LogoutBtn, Container, Button, Select, Login, Signup};
+export {Header, RTE, PostCard, PostForm, Protected, Footer, Logo, Input, LogoutBtn, Container, Button, Select, Login, Signup};

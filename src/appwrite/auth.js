@@ -57,4 +57,6 @@ export class AuthServices {
     }
 }
 
-export const authService = new AuthServices();
+const authService = new AuthServices();
+
+export default authService
