@@ -40,23 +40,20 @@ const router = createBrowserRouter([
         path: "/all-posts",
           element: (
             <Protected authentication>
-                {" "}
                 <AllPosts />
             </Protected>
           ),
       },{
         path: "/add-post",
         element: (
-          <Protected authentication>
-              {" "}
+          // <Protected authentication={true}>
               <AddPost />
-          </Protected>
+          // </Protected>
         ),
       },{
         path: "/edit-post/:slug",
         element: (
           <Protected authentication>
-              {" "}
               <EditPost />
           </Protected>
         ),

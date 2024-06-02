@@ -21,16 +21,15 @@ export class Service{
                 conf.appwriteCollectionId,
                 slug,
                 {
-                    title, 
-                    content,
-                    featuredImage,
-                    status,
-                    userId,
-                },
+                    "title": title,
+                    "content": content,
+                    "image": featuredImage,
+                    "status": status,
+                    "userId": userId,
+                }
             )
         } catch (error) {
-            console.log("Appwrite :: config : createPost : ", error);
-            throw(error)
+            console.log("Appwrite serive :: createPost :: error", error);
         }
     }
 
@@ -69,12 +68,11 @@ export class Service{
 
     async getPost(slug){
         try {
-            await this.databases.getDocument(
+            return await this.databases.getDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 slug,
             )
-            return true
         } catch (error) {
             console.log("Appwrite :: config : getPost : ", error);
             throw(error)
@@ -122,6 +120,7 @@ export class Service{
     }
 
     getFilePreview(fileId){
+        console.log("fileId: ", fileId)
         return this.bucket.getFilePreview(
             conf.appwriteBucketId,
             fileId

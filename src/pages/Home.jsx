@@ -6,9 +6,10 @@ function Home() {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        appWriteService.getPosts().then((posts) => {
-            if (posts) {
-                setPosts(posts.documents)
+        appWriteService.getPosts().then((postsArr) => {
+            if (postsArr) {
+                console.log("posts[]: ",postsArr)
+                setPosts(postsArr.documents)
             }
         })
     }, [])
@@ -28,17 +29,19 @@ function Home() {
             </div>
         )
     } else {
-        <div className='w-full py-8'>
-            <Container>
-                <div className='flex flex-wrap'>
-                {posts.map((post) => (
-                        <div key={post.$id} className='p-2 w-1/4'>
-                            <PostCard {...post}/>
-                        </div>
-                    ))}
-                </div>
-            </Container>
-        </div>
+        return (
+            <div className='w-full py-8'>
+                <Container>
+                    <div className='flex flex-wrap'>
+                    {posts.map((post) => (
+                            <div key={post.$id} className='p-2 w-1/4'>
+                                <PostCard {...post}/>
+                            </div>
+                        ))}
+                    </div>
+                </Container>
+            </div>
+        )
     }
 }
 
