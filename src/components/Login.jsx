@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import { login as authLogin } from '../store/authSlice.js';
+import { login } from '../store/authSlice.js';
 import { Button, Input, Logo } from './index.js';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import authService from '../appwrite/auth.js';
 import { useForm } from 'react-hook-form';
 
@@ -13,16 +13,20 @@ function Login() {
     const {register, handleSubmit} = useForm()
     const [error, setError] = useState("")
 
-    const login = async (data) => {
+    const signin = async (data) => {
         setError("")
         try {
+            // console.log(data)
             const session = await authService.loginAccount(data)
-            if(session){
+            // console.log(session)
+            if(session) {
                 const userData = await authService.getCurrentUser();
+                // console.log(userData)
                 if(userData) {
-                    dispatch(authLogin(userData))
+                    dispatch(login({userData}))
+                    // console.log(useSelector((state) => state.userData))
                     navigate("/")
-                } 
+                }
             }
         } catch (error) {
             setError(error.message)
@@ -47,7 +51,7 @@ function Login() {
                             </Link>
                 </p>
                 {error && <p className='text-red-500 mt-8 text-center'>{error}</p>}
-                <form onSubmit={handleSubmit(login)} className='mt-8'>
+                <form onSubmit={handleSubmit(signin)} className='mt-8'>
                     <div className='space-y-5'>
                         <Input label="Email" placeholder="Enter your email" type="email" 
                         {...register("email", {

@@ -4,12 +4,13 @@ const authSlice = createSlice({
     name: 'auth',
     initialState: {
         status: false,
-        userData: null
+        userData: null,
     },
     reducers: {
         login: (state, action) => {
             state.status = true;
             state.userData = action.payload.userData;
+            // console.log("Received userData: ", state.userData);
         },
         logout: (state) => {
             state.status = false;
