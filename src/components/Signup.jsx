@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import {login} from '../store/authSlice.js'
 import {useDispatch} from 'react-redux'
@@ -12,7 +12,7 @@ function SignUp() {
     const [error, setError] = useState("")
     const {register, handleSubmit} = useForm()
 
-    const createAccount = async(data) => {
+    const create = async(data) => {
         setError("")
         try {
             const session = await authService.createAccount(data);
@@ -33,7 +33,7 @@ function SignUp() {
             <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
                 <div className="mb-2 flex justify-center">
                         <span className="inline-block w-full max-w-[100px]">
-                            <Logo width="100%" />
+                            <Logo classname='w-auto' theme='light'/>
                         </span>
                 </div>
                 <h2 className="text-center text-2xl font-bold leading-tight">Sign up to create account</h2>
@@ -47,7 +47,7 @@ function SignUp() {
                             </Link>
                 </p>
                 {error && <p className='text-red-500 mt-8 text-center'>{error}</p>}
-                <form onSubmit={handleSubmit(createAccount)} className='mt-8'>
+                <form onSubmit={handleSubmit(create)} className='mt-8'>
                     <div className='space-y-5'>
                         <Input label="Email" placeholder="Enter your email" type="email" 
                         {...register("email", {
@@ -61,7 +61,7 @@ function SignUp() {
                         {...register("password", {
                             required: true,
                         })}/>
-                        <Button type="submit" className="w-full">
+                        <Button type="submit" className="w-full border-orange hover:bg-white" bgColor='bg-orange' textColor='text-black'>
                             Create Account
                         </Button>
                     </div>

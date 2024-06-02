@@ -4,7 +4,7 @@ import App from './App.jsx'
 import './index.css'
 import { Provider } from 'react-redux';
 import store from './store/store.js';
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './pages/Home.jsx'
 import { Protected } from './components/index.js'
 import AddPost from "./pages/AddPost.jsx";
@@ -32,33 +32,33 @@ const router = createBrowserRouter([
       },{
         path: "/signup",
         element: (
-          <Protected authentication={false}>
+          // <Protected authentication={false}>
             <Signup />
-          </Protected>
+          // </Protected>
         )
       },{
         path: "/all-posts",
           element: (
-            <AuthLayout authentication>
+            <Protected authentication>
                 {" "}
                 <AllPosts />
-            </AuthLayout>
+            </Protected>
           ),
       },{
         path: "/add-post",
         element: (
-          <AuthLayout authentication>
+          <Protected authentication>
               {" "}
               <AddPost />
-          </AuthLayout>
+          </Protected>
         ),
       },{
         path: "/edit-post/:slug",
         element: (
-          <AuthLayout authentication>
+          <Protected authentication>
               {" "}
               <EditPost />
-          </AuthLayout>
+          </Protected>
         ),
       },{
         path: "/post/:slug",

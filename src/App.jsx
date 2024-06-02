@@ -3,12 +3,14 @@ import { Header, Footer } from "./components"
 import { useDispatch } from "react-redux"
 import authService from "./appwrite/auth.js"
 import { login, logout } from "./store/authSlice.js"
+import { Outlet } from "react-router-dom";
 
 function App() {
   const [loading, setLoading] = useState(true)
-  const dispatch = useDispatch(authService)
+  const dispatch = useDispatch()
 
   useEffect(() => {
+    console.log("useEffect Called in App.jsx")
     authService.getCurrentUser()
     .then((userData) => {
       if (userData) {
@@ -26,8 +28,7 @@ function App() {
       <div className="w-full block">
         <Header />
         <main>
-          Content
-          {/* <Outlet /> */}
+          <Outlet />
         </main>
         <Footer />
       </div>

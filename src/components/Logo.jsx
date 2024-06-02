@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Logo() {
+function Logo({classname="", theme="dark"}) {
     return (
-        <img src="design/color/theblogs-high-resolution-logo-bg-dark-1.svg" alt="logo" />
+        <img className={classname} src={`/theblogs-high-resolution-logo-bg-${theme} 1.svg`} alt="logo" />
     )
 }
 
