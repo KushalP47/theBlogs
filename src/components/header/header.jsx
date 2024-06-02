@@ -35,42 +35,46 @@ function Header() {
       ]
 
     return (
-        // <div className="w-full h-30 bg-black flex flex-begin">
-        //     <img className="w-44 h-33 text-lg shadow-lg" src="theblogs-high-resolution-logo-bg-dark-1.svg" alt="logo" />
-        // </div>
-        <header>
-            <Container>
+            <section className='flex justify-center items-center'>
                 {/* Navbar  */}
-                <nav className='flex'>  
+                <nav className="w-full h-30 bg-black flex items-center justify-between px-4">
                     {/* Div for Logo  */}
-                    <div className='mr-4'>
+                    <div className='flex-shrink-0'>
                         <Link to="/">
-                            <Logo width='70px' />
+                            <Logo classname={`w-44 h-33 text-lg shadow-lg`} theme='dark'/>
                         </Link>
                     </div>
                     {/* Div for NavItems which is a unorder list */}
-                    <ul className='flex ml-auto'>
-                        {/* Navitems  */}
-                        {navItems.map((item) => 
-                            item.active ? (
-                             <li key={item.name}>
-                                <button onClick={navigate(item.slug)}
-                                className='inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'>
-                                    {item.name}
-                                </button>
-                             </li>   
-                            ) : null
-                        )}
-                        {/* Logout Button  */}
-                        {authStatus && (
-                            <li>
-                                <LogoutBtn />
-                            </li>
-                        )}
-                    </ul>
+                    <div>
+                        <ul className="hidden md:flex items-center justify-center flex-grow">
+                            {/* Navitems  */}
+                            {navItems.map((item) => 
+                                item.active ? (
+                                <li key={item.name}>
+                                    <button onClick={() => navigate(item.slug)}
+                                    className='inline-block px-6 py-4 text-lg duration-200 text-bold text-orange hover:text-white rounded-full'>
+                                        {item.name}
+                                    </button>
+                                </li>   
+                                ) : null
+                            )}
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            {/* Logout Button  */}
+                            {authStatus && (
+                                <div className='ml-auto'>
+                                    <li>
+                                        <LogoutBtn />
+                                    </li>
+                                </div>
+                            )}
+                        </ul>
+                    </div>
                 </nav>
-            </Container>
-        </header>
+            </section>
+        // </header>
     )
 }
 
