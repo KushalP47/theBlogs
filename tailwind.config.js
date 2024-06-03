@@ -11,7 +11,9 @@ export default {
       'white': '#f9f4ec',
       'black': '#201f1f',
       'orange': '#ee5626'
-    },
+    },fontFamily: {
+      sans: ['Poppins', 'sans-serif']
+    }
   },
   plugins: [],
 }
