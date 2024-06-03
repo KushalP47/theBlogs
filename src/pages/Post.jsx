@@ -42,17 +42,17 @@ export default function Post() {
                     <img
                         src={appwriteService.getFilePreview(post.image)}
                         alt={post.title}
-                        className="rounded-xl"
+                        className="rounded-xl h-1/2 w-full justify-center"
                     />
 
                     {isAuthor && (
                         <div className="absolute right-6 top-6">
                             <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-green-500" className="mr-3">
+                                <Button className="mr-3 border-4 border-orange bg-orange hover:bg-white">
                                     Edit
                                 </Button>
                             </Link>
-                            <Button bgColor="bg-red-500" onClick={deletePost}>
+                            <Button className="mr-3 border-4 border-orange bg-orange hover:bg-white">
                                 Delete
                             </Button>
                         </div>

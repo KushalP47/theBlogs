@@ -24,11 +24,11 @@ function PostForm({post = null}) {
 
             // deleting the old file
             if(file) {
-                appWriteService.deleteFile(post.featuredImage)
+                appWriteService.deleteFile(post.image)
             }
 
             const dbPost = await appWriteService.updatePost(post.$id, {...data, 
-                featuredImage: file ? file.$id : undefined})
+                image: file ? file.$id : undefined})
 
             if(dbPost) {
                 navigate(`/post/${dbPost.$id}`)
@@ -37,8 +37,8 @@ function PostForm({post = null}) {
             const file = await appWriteService.uploadFile(data.image[0]);
             if (file) {
                 const fileId = file.$id;
-                data.featuredImage = fileId;
-                console.log(data.featuredImage)
+                data.image = fileId;
+                console.log(data.image)
                 const dbPost = await appWriteService.createPost({ ...data, userId: userData.$id });
 
                 if (dbPost) {
@@ -54,6 +54,7 @@ function PostForm({post = null}) {
             .trim()
             .toLowerCase()
             .replace(/[^a-zA-Z\d\s]+/g, '-')
+            .replace(/\s/g, "-");
         }
 
         return ""
@@ -93,11 +94,11 @@ function PostForm({post = null}) {
                         setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
                     }}
                 />
-                <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
+                <RTE label="Content" name="content" control={control} defaultValue={getValues("content")} />
             </div>
             <div className="w-1/3 px-2">
                 <Input
-                    label="Featured Image :"
+                    label="Featured Image"
                     type="file"
                     className="mb-4"
                     accept="image/png, image/jpg, image/jpeg, image/gif"
@@ -106,7 +107,7 @@ function PostForm({post = null}) {
                 {post && (
                     <div className="w-full mb-4">
                         <img
-                            src={appWriteService.getFilePreview(post.featuredImage)}
+                            src={appWriteService.getFilePreview(post.image)}
                             alt={post.title}
                             className="rounded-lg"
                         />
@@ -118,7 +119,7 @@ function PostForm({post = null}) {
                     className="mb-4"
                     {...register("status", { required: true })}
                 />
-                <Button type="submit" bgColor={"bg-orange"} className="w-full">
+                <Button type="submit" bgColor={"bg-orange"} className="w-full border-4 border-orange hover:bg-white">
                     {post ? "Update" : "Submit"}
                 </Button>
             </div>

@@ -65,7 +65,7 @@ function Login() {
                         {...register("password", {
                             required: true,
                         })}/>
-                        <Button type="submit" className="w-full border-orange hover:bg-white" bgColor='bg-orange' textColor='text-black'>
+                        <Button type="submit" className="w-full border-4 border-orange hover:bg-white" bgColor='bg-orange' textColor='text-black'>
                             Sign in
                         </Button>
                     </div>

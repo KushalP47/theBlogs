@@ -50,6 +50,10 @@ function SignUp() {
                 {error && <p className='text-red-500 mt-8 text-center'>{error}</p>}
                 <form onSubmit={handleSubmit(create)} className='mt-8'>
                     <div className='space-y-5'>
+                        <Input label="Name: " type="text" placeholder="Enter your name"
+                        {...register("name", {
+                            required: true,
+                        })}/>
                         <Input label="Email" placeholder="Enter your email" type="email" 
                         {...register("email", {
                             required: true,
@@ -62,7 +66,7 @@ function SignUp() {
                         {...register("password", {
                             required: true,
                         })}/>
-                        <Button type="submit" className="w-full border-orange hover:bg-white" bgColor='bg-orange' textColor='text-black'>
+                        <Button type="submit" className="w-full border-4 border-orange hover:bg-white" bgColor='bg-orange' textColor='text-black'>
                             Create Account
                         </Button>
                     </div>
