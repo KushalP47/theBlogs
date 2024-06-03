@@ -23,12 +23,12 @@ function Header() {
           active: !authStatus,
       },
       {
-          name: "All Posts",
+          name: "Blogs",
           slug: "/all-posts",
           active: authStatus,
       },
       {
-          name: "Add Post",
+          name: "Add",
           slug: "/add-post",
           active: authStatus,
       },
@@ -52,7 +52,7 @@ function Header() {
                                 item.active ? (
                                 <li key={item.name}>
                                     <button onClick={() => navigate(item.slug)}
-                                    className='inline-block px-6 py-4 text-lg duration-200 text-bold text-orange hover:text-white rounded-full'>
+                                    className='inline-block px-6 py-4 font-sans font-semibold text-xl duration-200 text-bold text-orange hover:text-white rounded-full'>
                                         {item.name}
                                     </button>
                                 </li>   
@@ -64,7 +64,7 @@ function Header() {
                         <ul>
                             {/* Logout Button  */}
                             {authStatus && (
-                                <div className='ml-auto'>
+                                <div className='ml-auto my-auto'>
                                     <li>
                                         <LogoutBtn />
                                     </li>
