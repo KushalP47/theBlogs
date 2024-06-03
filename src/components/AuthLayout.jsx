@@ -11,9 +11,7 @@ function Protected({children, authentication = true}) {
     useEffect(() => {
         //TODO: make it more easy to understand
 
-        if (authStatus === true){
-            navigate("/")
-        } else if (authStatus === false) {
+        if (authStatus === false) {
             navigate("/login")
         }
         

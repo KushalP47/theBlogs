@@ -1,20 +1,40 @@
 import React, { useState, useEffect } from 'react'
 import { Container, PostCard } from '../components'
 import appWriteService from '../appwrite/config.js'
+import { useSelector } from 'react-redux';
 
 function Home() {
     const [posts, setPosts] = useState([])
-
+    const authStatus = useSelector((state) => state.auth.status)
+    const [flag, setFlag] = useState(0)
     useEffect(() => {
-        appWriteService.getPosts().then((postsArr) => {
-            if (postsArr) {
-                console.log("posts[]: ",postsArr)
-                setPosts(postsArr.documents)
-            }
-        })
-    }, [])
-
-    if(posts.length === 0) {
+        if(authStatus) {
+            setFlag(1)
+            appWriteService.getPosts().then((postsArr) => {
+                if (postsArr) {
+                    console.log("posts[]: ",postsArr)
+                    setPosts(postsArr.documents)
+                }
+            })
+        } else {
+            setFlag(0);
+        }
+    }, [authStatus])
+    if(flag === 0) {
+        return (
+            <div className="w-full py-8 mt-4 text-center">
+                <Container>
+                    <div className="flex flex-wrap">
+                        <div className="p-2 w-full">
+                            <h1 className="text-2xl font-bold hover:text-gray-500">
+                                User Need to Login
+                            </h1>
+                        </div>
+                    </div>
+                </Container>
+            </div>
+        )
+    } else if(posts.length === 0) {
         return (
             <div className="w-full py-8 mt-4 text-center">
                 <Container>
